@@ -65,6 +65,7 @@ nav .items > li{
 }
 .display{
   display: block !important;
+  opacity: 1 !important;
 }
 .items > li ul li{
     position: relative;
@@ -86,13 +87,16 @@ nav .items > li{
 }
 aside{
   float: left;
-  display: none;
   position: fixed;
   height: 100%;
   width: 0;
+  opacity: 0;
+  z-index: 3;
 }
 .container{
   margin: 0 auto;
+  left: 0;
+  position: relative;
 }
 .jumbotron {
   background: url(../images/background-image.jpg) no-repeat;
@@ -134,7 +138,22 @@ aside{
   background-color: rgba(0, 0, 0, 0.5);
   top: 72px;
   z-index: 1;
-  display: none;
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}
+.copyright{
+  height: 48px;
+  color: #000;
+  bottom: 0;
+  position: inherit;
+  font: 12px Helvetica;
+}
+.copyright p{
+  margin: 17px 24px;
+}
+/*animation*/
+* {
+  transition: all 0.2s ease-in-out;
 }
 /*
 Mobile
@@ -169,15 +188,16 @@ Mobile
     width: 90%;
     background-color: #fff;
     padding: 12px 0;
-    z-index: 2;
-  }
+  
+    opacity: 1;
+}
   aside ul li .icon{
     display: block;
     background: url(../images/expand.svg) 50% 50%;
     height: 100%;
     float: right;
     width: 28px;
-}
+  }
   aside ul li.active .icon {
     background: url(../images/collapse.svg) 50% 50%;
   }
@@ -187,10 +207,12 @@ Mobile
   .items > li ul li:hover{
       background-color: #eee;
   }
-  aside ul.items > li:hover a{
-    color: #000;
+  aside ul.items > li:hover a:hover{
+    color: #ec008c;
   }
-
+  .container.open{
+    left: 90%;
+  }
   .items > li ul li:hover{
       background-color: #eee;
   }

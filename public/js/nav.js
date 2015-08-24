@@ -79,6 +79,10 @@
 	// prevents normal behavior of anchor tag display/hide submenu
 	function toggler(e){
 		e.preventDefault();
+		if(_has(this,'active')){
+			prevent(e);
+			return false
+		}
 		clean();
 		_toggle(this,'active');
 		var children = this.children;
@@ -113,15 +117,18 @@
 	function screEn(e){
 		e.preventDefault();
 		clean();
-		_remove(this,'display');
+		ham (e);
 	}
 	function ham (e) {
 		if(window.innerWidth>768) return false;
 		_toggle(_class('ham')[0],'open');
 		_toggle(_class('huge')[0],'display');
 		_toggle(_firsTag('aside'),'display');
+		_toggle(_class('container')[0],'open');
 		if (!_has(_id('screen'),'display')) {
 			_add(_id('screen'),'display');
+		}else{
+			_remove(_id('screen'),'display');
 		}
 
 	}
